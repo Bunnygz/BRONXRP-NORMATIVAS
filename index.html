@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORMATIVAS RP - OFICIAL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 20, 40, 0.8)), 
+                        url('https://i.imgur.com/Z3D0pWo.png') center/cover;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+        }
+
+        .particle:nth-child(2n) {
+            background: #0080ff;
+            box-shadow: 0 0 10px #0080ff;
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            animation: logoGlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px #00d4ff);
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 30px #00d4ff);
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 50px #00d4ff) drop-shadow(0 0 80px #0080ff);
+                transform: scale(1.05);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0080ff 50%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #00d4ff;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0080ff);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px #00d4ff);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .feature p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* MODALES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: fadeInModal 0.3s ease;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 20, 40, 0.95), rgba(0, 0, 0, 0.95));
+            margin: 3% auto;
+            padding: 3rem;
+            border: 2px solid #00d4ff;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #00d4ff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+
+        .close:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .modal-card h3 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-card li {
+            padding: 0.5rem 0;
+            color: #ccc;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .modal-card li:before {
+            content: "✓ ";
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .penalty-card {
+            background: rgba(255, 50, 50, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .penalty-card h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .penalty-card p {
+            color: #00d4ff;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 2rem 1rem;
+                margin: 10% auto;
+            }
+
+            .modal-title {
+                font-size: 2rem;
+            }
+
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .close {
+                font-size: 30px;
+                right: 15px;
+                top: 15px;
+            }
+        }
+
+        .animate-in {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="particles" id="particles"></div>
+        
+        <div class="container animate-in">
+            <img src="https://i.imgur.com/Z3D0pWo.png" class="logo" alt="Logo">
+            
+            <h1>NORMATIVAS RP</h1>
+            <p class="tagline">REGLAS ESENCIALES PARA UN ROLEPLAY SERIO ⚖️</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    <span>📖 Leer Normativas</span>
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <span>⚠️ Ver Sanciones</span>
+                </a>
+            </div>
+
+            <div class="features">
+                <div class="feature" onclick="openModal('seroModal')">
+                    <div class="feature-icon">🎭</div>
+                    <h3>Roleplay Serio</h3>
+                    <p>Normas fundamentales para mantener la calidad del rol</p>
+                </div>
+                
+                <div class="feature" onclick="openModal('ilegalesModal')">
+                    <div class="feature-icon">🔪</div>
+                    <h3>Actividades Ilegales</h3>
+                    <p>Reglas para operaciones criminales y enfrentamientos</p>
+                </div>
+                
+                <div class="feature" onclick="openModal('combateModal')">
+                    <div class="feature-icon">💣</div>
+                    <h3>Reglas de Combate</h3>
+                    <p>Restricciones y límites en enfrentamientos</p>
+                </div>
+
+                <div class="feature" onclick="openModal('sancioModal')">
+                    <div class="feature-icon">🚔</div>
+                    <h3>Sistema de Sanciones</h3>
+                    <p>Castigos por violar las normativas</p>
+                </div>
+                
+                <div class="feature" onclick="openModal('metaModal')">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Meta-Gaming Prohibido</h3>
+                    <p>Qué se considera meta-gaming y consecuencias</p>
+                </div>
+
+                <div class="feature" onclick="openModal('convModal')">
+                    <div class="feature-icon">👥</div>
+                    <h3>Convivencia en Servidor</h3>
+                    <p>Normas sociales y respeto entre jugadores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Roleplay Serio -->
+    <div id="seroModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('seroModal')">&times;</span>
+            <h2 class="modal-title">🎭 ROLEPLAY SERIO</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>📝 Inmersión en el Rol</h3>
+                    <ul>
+                        <li>Mantén tu personaje en TODO momento</li>
+                        <li>No hables de asuntos OOC (fuera de personaje)</li>
+                        <li>Crea una historia coherente para tu personaje</li>
+                        <li>Respeta la edad de tu personaje</li>
+                        <li>Consistencia en personalidad y comportamiento</li>
+                        <li>No cambies drásticamente sin razón IC</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🚫 Meta-Gaming Prohibido</h3>
+                    <ul>
+                        <li>No uses info que tu personaje no sabe</li>
+                        <li>No abuses del IC con Discord</li>
+                        <li>Desactiva TS/Discord mientras roleplay serio</li>
+                        <li>No busques a jugadores por meta-info</li>
+                        <li>Olvida info si tu personaje muere</li>
+                        <li>No compartas ubicaciones OOC</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>⚡ Power-Gaming</h3>
+                    <ul>
+                        <li>No controles las acciones de otros</li>
+                        <li>Permite que otros reaccionen</li>
+                        <li>No hagas acciones imposibles</li>
+                        <li>Respeta la velocidad del rol</li>
+                        <li>Evita el god-mode</li>
+                        <li>No des por hecho resultados</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>💭 New Life Rule (NLR)</h3>
+                    <ul>
+                        <li>Olvidas TODO al morir IC</li>
+                        <li>No regreses a zona de muerte</li>
+                        <li>Mínimo 15 minutos antes de volver</li>
+                        <li>No persiguas a tu asesino</li>
+                        <li>No busques venganza directa</li>
+                        <li>El staff verifica cumplimiento</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ CASTIGOS POR VIOLACIÓN</h3>
+                <p><strong>Primera infracción:</strong> Advertencia + Kick<br>
+                <strong>Segunda infracción:</strong> Jail IC (1-6 horas)<br>
+                <strong>Tercera infracción:</strong> Ban temporal (24-48 horas)<br>
+                <strong>Reincidencia:</strong> Ban permanente</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ilegales -->
+    <div id="ilegalesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ilegalesModal')">&times;</span>
+            <h2 class="modal-title">🔪 OPERACIONES ILEGALES</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>🏦 Robos y Atracos</h3>
+                    <ul>
+                        <li>⭐ SOLO DE NOCHE (20:00 - 06:00)</li>
+                        <li>Mínimo 2 policías conectados</li>
+                        <li>Mínimo 3 civiles activos en zona</li>
+                        <li>Avisar "Atraco iniciado" en /me</li>
+                        <li>Máximo 1 atraco cada 90 minutos</li>
+                        <li>Policía DEBE estar en alerta</li>
+                        <li>No atacar ante baja actividad</li>
+                        <li>Seguir CK de policía presente</li>
+                        <li>Permitir defensa policial</li>
+                        <li>Máximo 2 atracos por noche</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🚗 Robo de Vehículos</h3>
+                    <ul>
+                        <li>⭐ SOLO VEHÍCULOS DE CIVILES</li>
+                        <li>No robes autos de policía/SWAT</li>
+                        <li>Solo autos normales (no especiales)</li>
+                        <li>Avisar previo si hay jugador cerca</li>
+                        <li>Respeta propiedad privada</li>
+                        <li>No robes repetidamente el mismo</li>
+                        <li>Máximo 2 robos cada 2 horas</li>
+                        <li>Requiere herramientas para romper</li>
+                        <li>Alarma alertará a policía</li>
+                        <li>Se puede perder dinero si fallas</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>💊 Tráfico de Drogas</h3>
+                    <ul>
+                        <li>Négocia precio de forma realista</li>
+                        <li>Prepara deals con anticipación</li>
+                        <li>No fuerces a otros a comprar</li>
+                        <li>Policía puede intervenir</li>
+                        <li>Consecuencias IC por ser atrapado</li>
+                        <li>Máximo 4 transacciones por session</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🔫 Enfrentamientos Armados</h3>
+                    <ul>
+                        <li>Debe existir motivación IC válida</li>
+                        <li>Avisa antes de disparar</li>
+                        <li>No dispares sin avisar 3+ segundos</li>
+                        <li>Respeta zonas neutrales</li>
+                        <li>No abuses de Kevlar</li>
+                        <li>Acepta consecuencias de pérdida</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>👮 Interacción con Policía</h3>
+                    <ul>
+                        <li>Respetalos como autoridad IC</li>
+                        <li>Pueden perseguirte legítimamente</li>
+                        <li>Negocia o intenta escapar IC</li>
+                        <li>No executes policías sin razón</li>
+                        <li>Respeta su rol como fuerzas del orden</li>
+                        <li>Puedes negociar rescate</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🌐 Organizaciones Criminales</h3>
+                    <ul>
+                        <li>Requiere aprobación del staff</li>
+                        <li>Máximo 15 miembros activos</li>
+                        <li>Debe tener estructura IC</li>
+                        <li>Líderes responsables del resto</li>
+                        <li>No exceder límite de robos/mes</li>
+                        <li>Reporta actividad al staff</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ SANCIONES OPERACIONALES</h3>
+                <p><strong>Operación mal ejecutada:</strong> Rollback + Advertencia<br>
+                <strong>Abuso repetido:</strong> Jail (2-6 horas)<br>
+                <strong>Crimen sin justificación:</strong> Ban temporal<br>
+                <strong>Perder dinero en operación fallida</strong> (Consecuencia IC)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Combate -->
+    <div id="combateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('combateModal')">&times;</span>
+            <h2 class="modal-title">💣 REGLAS DE COMBATE</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>🚫 RDM (Random Death Match)</h3>
+                    <ul>
+                        <li>PROHIBIDO matar sin motivación IC</li>
+                        <li>Debe existir conflicto previo</li>
+                        <li>Avisa con un /me antes de disparar</li>
+                        <li>Permite reacción de otros jugadores</li>
+                        <li>No jales armas sin razón</li>
+                        <li>Castigo: Ban automático</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🚗 VDM (Vehicle Death Match)</h3>
+                    <ul>
+                        <li>No choques jugadores con vehículos</li>
+                        <li>Conducir agresivo solo en persecución</li>
+                        <li>No uses auto como arma</li>
+                        <li>Evita zonas peatonales con velocidad</li>
+                        <li>Responsable de accidentes</li>
+                        <li>Ban de 24-48 horas si reincides</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>⏱️ Cooldowns Obligatorios</h3>
+                    <ul>
+                        <li>30 minutos entre enfrentamientos</li>
+                        <li>45 minutos entre atracos</li>
+                        <li>60 minutos si pierdes dinero</li>
+                        <li>No combate nocturno entre 3-8 AM</li>
+                        <li>Máximo 3 combates por session</li>
+                        <li>Se resetea al cambiar session</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🎯 Zona de Spawn / Puntos Seguros</h3>
+                    <ul>
+                        <li>PROHIBIDO disparar en spawns</li>
+                        <li>Banco, hospital, comisaría son seguras</li>
+                        <li>Respetar otros puntos seguros</li>
+                        <li>No lleves armas a zonas seguras</li>
+                        <li>No persigasajena en estos lugares</li>
+                        <li>Castigo: Jail + kick</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>💪 Límites Físicos</h3>
+                    <ul>
+                        <li>Máximo 2 Kevlar por jugador</li>
+                        <li>No excedas salud realista</li>
+                        <li>1 bala = mínimo 25 daño</li>
+                        <li>No uses hacks de salud</li>
+                        <li>Reporta bugs explotables</li>
+                        <li>Ban permanente por exploits</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🏥 Muerte y Respawn</h3>
+                    <ul>
+                        <li>Olvidas TODO al morir</li>
+                        <li>No reconozcas a tu asesino</li>
+                        <li>Espera 15 min antes de volver</li>
+                        <li>No regreses con venganza</li>
+                        <li>Crea nueva historia IC</li>
+                        <li>No metagamees tu muerte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ SANCIONES POR COMBATE ILEGAL</h3>
+                <p><strong>RDM Único:</strong> Ban 48-72 horas<br>
+                <strong>VDM Intencional:</strong> Ban 72+ horas<br>
+                <strong>Reincidencia:</strong> Ban permanente<br>
+                <strong>Exploit de combate:</strong> Ban permanente inmediato</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sanciones -->
+    <div id="sancioModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sancioModal')">&times;</span>
+            <h2 class="modal-title">🚔 SISTEMA DE SANCIONES</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>📍 Nivel 1: Advertencia</h3>
+                    <ul>
+                        <li>Primer aviso por infracción menor</li>
+                        <li>Kick del servidor (sin ban)</li>
+                        <li>Puede regresar al reintentar</li>
+                        <li>Se registra en historial</li>
+                        <li>Staff te contactará por Discord</li>
+                        <li>Tienes 48 horas para responder</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>📍 Nivel 2: Jail IC</h3>
+                    <ul>
+                        <li>Encierro en servidor 2-6 horas</li>
+                        <li>Se aplica por infracciones moderadas</li>
+                        <li>Castigo IC (no puedes escapar)</li>
+                        <li>Se registra en tus antecedentes</li>
+                        <li>No se reinicia al desconectar</li>
+                        <li>Pérdida de dinero IC parcial</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>📍 Nivel 3: Ban Temporal</h3>
+                    <ul>
+                        <li>Prohibición 24-72 horas</li>
+                        <li>Se aplica por infracciones graves</li>
+                        <li>Antecedentes permanentes</li>
+                        <li>Apelación posible en Discord</li>
+                        <li>Segunda vez: ban 7 días</li>
+                        <li>Tercera vez: ban permanente</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>📍 Nivel 4: Ban Permanente</h3>
+                    <ul>
+                        <li>Expulsión definitiva del servidor</li>
+                        <li>Por infracciones extremadamente graves</li>
+                        <li>Prohibición de apelar</li>
+                        <li>Se incluye a alternativas</li>
+                        <li>Reportado a comunidad</li>
+                        <li>IP registrada como prohibida</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ TABLA DE INFRACCIONES</h3>
+                <p><strong>RDM:</strong> Ban 48-72h | <strong>VDM:</strong> Ban 72h+ | <strong>Meta-Gaming:</strong> Ban 24-48h<br>
+                <strong>Power-Gaming:</strong> Jail 4-6h | <strong>NLR:</strong> Jail 2-4h | <strong>DM Spam:</strong> Ban 72h<br>
+                <strong>Exploits:</strong> Ban permanente | <strong>Insultos:</strong> Kick | <strong>Troll:</strong> Jail 1-2h</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Meta-Gaming -->
+    <div id="metaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('metaModal')">&times;</span>
+            <h2 class="modal-title">🧠 META-GAMING PROHIBIDO</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>❌ Qué es Meta-Gaming</h3>
+                    <ul>
+                        <li>Usar información OOC en IC</li>
+                        <li>Hablar por Discord durante RP</li>
+                        <li>Saber ubicación por alt account</li>
+                        <li>Usar stream de otros jugadores</li>
+                        <li>Conocer dinero/items que no ves</li>
+                        <li>Recordar tras morir (NLR)</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>💬 Comunicación OOC</h3>
+                    <ul>
+                        <li>Discord debe estar APAGADO</li>
+                        <li>No comuniques info a amigos</li>
+                        <li>No avises ubicación de enemigos</li>
+                        <li>Silencia el micrófono en TS</li>
+                        <li>No hagas callouts en RP serio</li>
+                        <li>Consecuencia: Ban 48+ horas</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🎬 Uso de Streams</h3>
+                    <ul>
+                        <li>No veas stream de otros en vivo</li>
+                        <li>Retraso mínimo 5 minutos</li>
+                        <li>No uses info para ventaja</li>
+                        <li>No avises a streamer ubicación</li>
+                        <li>Se considera meta si te beneficia</li>
+                        <li>Ban si se comprueba</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🔄 Alternativas (Alts)</h3>
+                    <ul>
+                        <li>No uses alts para meta</li>
+                        <li>Cada alt es personaje independiente</li>
+                        <li>No compartas dinero entre alts</li>
+                        <li>No busques enemigos con alt</li>
+                        <li>No dupliques información</li>
+                        <li>Máximo 3 alts simultáneos</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>📊 Información Sensible</h3>
+                    <ul>
+                        <li>Ubicaciones de atracos/drogas</li>
+                        <li>Cantidad de dinero exacto</li>
+                        <li>Nombres reales de enemigos</li>
+                        <li>Planes futuros de otros</li>
+                        <li>Stats personales de jugadores</li>
+                        <li>Debes descubrirlo IC</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🔍 Detección y Castigo</h3>
+                    <ul>
+                        <li>Staff revisa logs constantemente</li>
+                        <li>Discord logs son verificables</li>
+                        <li>Stream VODs son revisables</li>
+                        <li>Reportes investigados a fondo</li>
+                        <li>No hay beneficio de duda</li>
+                        <li>Confesión = ban automático</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ PENALIZACIONES POR META</h3>
+                <p><strong>Primera vez:</strong> Kick + Investigación<br>
+                <strong>Segunda vez:</strong> Ban 24-48 horas<br>
+                <strong>Tercera vez:</strong> Ban 7 días<br>
+                <strong>Reincidencia:</strong> Ban permanente</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Convivencia -->
+    <div id="convModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('convModal')">&times;</span>
+            <h2 class="modal-title">👥 CONVIVENCIA EN SERVIDOR</h2>
+            
+            <div class="modal-grid">
+                <div class="modal-card">
+                    <h3>🤝 Respeto entre Jugadores</h3>
+                    <ul>
+                        <li>Trata a otros como te gustaría</li>
+                        <li>No insultes fuera de IC</li>
+                        <li>Respeta opiniones diferentes</li>
+                        <li>No hagas bullying</li>
+                        <li>Ayuda a nuevos jugadores</li>
+                        <li>Sé maduro en chat general</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🚫 Conducta Prohibida</h3>
+                    <ul>
+                        <li>Insultos racistas/sexistas</li>
+                        <li>Discriminación de cualquier tipo</li>
+                        <li>Acoso a otros jugadores</li>
+                        <li>Spam en chat</li>
+                        <li>Publicidad de otros servidores</li>
+                        <li>Contenido sexual/ofensivo</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>💬 Uso del Chat</h3>
+                    <ul>
+                        <li>Chat OOC solo para info importante</li>
+                        <li>No hagas spam innecesario</li>
+                        <li>Responde de forma coherente</li>
+                        <li>No caps lock excesivo</li>
+                        <li>Reporta bugs no exploits</li>
+                        <li>Lenguaje apropiado siempre</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>👨‍⚖️ Autoridad del Staff</h3>
+                    <ul>
+                        <li>Obedece órdenes del staff</li>
+                        <li>No argumentes sus decisiones</li>
+                        <li>Puedes apelar por Discord</li>
+                        <li>Se respetuoso en todo momento</li>
+                        <li>Cumple castigos sin quejas</li>
+                        <li>El staff tiene última palabra</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>⚙️ Reporte de Problemas</h3>
+                    <ul>
+                        <li>Usa comando /report en servidor</li>
+                        <li>Discord para apelaciones</li>
+                        <li>Sé específico en descripción</li>
+                        <li>Proporciona pruebas si tienes</li>
+                        <li>No hagas reportes falsos</li>
+                        <li>Espera respuesta del staff</li>
+                    </ul>
+                </div>
+
+                <div class="modal-card">
+                    <h3>🎯 Objetivos Comunitarios</h3>
+                    <ul>
+                        <li>Crear comunidad sana</li>
+                        <li>Roleplay de calidad para todos</li>
+                        <li>Diversión sin toxicidad</li>
+                        <li>Inclusión y respeto</li>
+                        <li>Crecimiento del servidor</li>
+                        <li>Eventos y competencias justas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="penalty-card">
+                <h3>⚠️ SANCIONES POR MALA CONDUCTA</h3>
+                <p><strong>Insulto leve:</strong> Kick | <strong>Insulto grave:</strong> Ban 24h<br>
+                <strong>Discriminación:</strong> Ban 48-72h | <strong>Acoso:</strong> Ban 7+ días<br>
+                <strong>Spam:</strong> Kick | <strong>Contenido sexual:</strong> Ban 72h+</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generar partículas
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Funciones para modales
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
